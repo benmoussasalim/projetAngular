@@ -1,0 +1,30 @@
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container spacer">
+  <div class="row">
+
+
+    <div class="col-md-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Liste des clients</h3>
+        </div>
+        <ul class="list-group">
+<table class="table table-striped">
+<tr>
+  <th>Id</th> <th>Nom</th> <th>Prénom</th> <th>Date de naissance</th> <th>Email</th> <th>Adresse</th>
+</tr>
+<tr *ngFor='let c of pageclient'>
+<td>{{c.code}}</td> <td>{{c.nom}}</td> <td>{{c.prenom}}</td> <td>{{c.dateNaiss}}</td> <td>{{c.email}}</td> <td>{{c.adresss}}</td>
+</tr>
+</table>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
