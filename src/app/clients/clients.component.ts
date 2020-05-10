@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {ClientServiceService} from '../services/client-service.service';
+import {HttpClient} from '@angular/common/http';
+import {Client} from '../Model/Client';
+
 
 
 @Component({
@@ -9,15 +11,33 @@ import {ClientServiceService} from '../services/client-service.service';
   styleUrls: ['./clients.component.css']
 })
 export class ClientsComponent implements OnInit {
-pageclient: any;
-  constructor(public http: HttpClient ,public clientService: ClientServiceService) { }
+pageclient: Client[];
+motCle = ''; string;
+currentPage = 0 ; size = 5 ; number;
+pages: any;
+
+  constructor( public http: HttpClient , private  clientService: ClientServiceService) { }
 
   ngOnInit(): void {
-   this.clientService.getClients().subscribe(data => {
-     this.pageclient = data;
-   }, error => {
-     console.log(error);
-   } );
   }
 
+  dosearch() {
+    this.clientService.getClientss(this.motCle, this.currentPage, this.size).subscribe(data => {
+      this.pageclient = data.content;
+      this.pages = new Array(data.totalPages);
+      console.log(data);
+    }, error => {
+      console.log(error);
+    } );
+  }
+
+
+  chercher() {
+this.dosearch();
+  }
+
+  goToPage(i: number) {
+    this.currentPage = i;
+    this.dosearch();
+  }
 }
