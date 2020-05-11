@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ClientServiceService} from '../services/client-service.service';
 import {HttpClient} from '@angular/common/http';
 import {Client} from '../Model/Client';
+import {Router} from '@angular/router';
 
 
 
@@ -16,7 +17,7 @@ motCle = ''; string;
 currentPage = 0 ; size = 5 ; number;
 pages: any;
 
-  constructor( public http: HttpClient , private  clientService: ClientServiceService) { }
+  constructor( public http: HttpClient , private  clientService: ClientServiceService , public router: Router) { }
 
   ngOnInit(): void {
   }
@@ -39,5 +40,9 @@ this.dosearch();
   goToPage(i: number) {
     this.currentPage = i;
     this.dosearch();
+  }
+
+  onEditClient(code: any) {
+this.router.navigate(['editClient', code]);
   }
 }

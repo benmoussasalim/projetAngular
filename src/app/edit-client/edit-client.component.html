@@ -1,0 +1,99 @@
+
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container spacer" >
+
+
+  <div class="row" *ngIf="mode==1">
+    <div class="col-md-12">
+
+
+      <div class="panel panel-primary" >
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Modifier un client</h3>
+        </div>
+
+        <ul class="list-group">
+          <div>
+            <label class="control-label">Nom:</label>
+            <input class="form-control" type="text" [(ngModel)]="client.nom">
+          </div>
+
+          <div>
+            <label class="control-label">Prénom:</label>
+            <input class="form-control" type="text" [(ngModel)]="client.prenom">
+          </div>
+
+          <div>
+            <label class="control-label">Date de naissance:</label>
+            <input class="form-control" type="date" [(ngModel)]="client.dateNaiss">
+          </div>
+          <div>
+            <label class="control-label">Email:</label>
+            <input class="form-control" type="text" [(ngModel)]="client.email">
+          </div>
+          <div>
+            <label class="control-label">Adresse:</label>
+            <input class="form-control" type="text" [(ngModel)]="client.adresse">
+          </div>
+
+        </ul>
+        <button class="btn btn-primary" (click)="updateClient()">Modifier</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row" *ngIf="mode==2">
+    <div class="col-md-12">
+
+      <div class="panel panel-primary" >
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Confirmation</h3>
+        </div>
+
+        <ul class="list-group">
+          <div>
+            <label class="control-label">Id:</label>
+            <label> {{client.code}}</label>
+          </div>
+          <div>
+            <label class="control-label">Nom:</label>
+            <label> {{client.nom}}</label>
+          </div>
+
+          <div>
+            <label class="control-label">Prénom:</label>
+            <label> {{client.prenom}}</label>
+          </div>
+
+          <div>
+            <label class="control-label">Date de naissance:</label>
+            <label> {{client.dateNaiss}}</label>
+          </div>
+          <div>
+            <label class="control-label">Email:</label>
+            <label> {{client.email}}</label>
+          </div>
+          <div>
+            <label class="control-label">Adresse:</label>
+            <label> {{client.adresse}}</label>
+          </div>
+
+        </ul>
+        <button class="btn btn-primary" routerLink="/clients">List des Clients</button>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+

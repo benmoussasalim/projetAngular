@@ -26,7 +26,15 @@
   <th>Id</th> <th>Nom</th> <th>Prénom</th> <th>Date de naissance</th> <th>Email</th> <th>Adresse</th>
 </tr>
 <tr *ngFor='let c of pageclient'>
-<td>{{c.code}}</td> <td>{{c.nom}}</td> <td>{{c.prenom}}</td> <td>{{c.dateNaiss}}</td> <td>{{c.email}}</td> <td>{{c.adresse}}</td>
+<td>{{c.code}}</td>
+  <td>{{c.nom}}</td>
+  <td>{{c.prenom}}</td>
+  <td>{{c.dateNaiss}}</td>
+  <td>{{c.email}}</td>
+  <td>{{c.adresse}}</td>
+  <td>
+    <a (click)="onEditClient(c.code)" class="clickable"> Edit </a>
+  </td>
 </tr>
 </table>
           <div class="container">
