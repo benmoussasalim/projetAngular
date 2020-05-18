@@ -1,0 +1,103 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+
+<div class="container .spacer">
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          Consultation d'un compte</h3>
+      </div>
+        <ul class="list-group">
+          <div>
+            <label>Code de Compte:</label>
+            <input type="text" [(ngModel)]="idCompte">
+            <button class="btn btn-primary" (click)="chercherCompte(idCompte)">OK</button>
+          </div>
+          <div class="text-danger" *ngIf="!infoCompte" >{{message}}</div>
+    </ul>
+
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row justify-content-end "  *ngIf="infoCompte" >
+    <div class="col-md-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Opérations sur le compte </h3>
+
+        </div>
+        <ul class="list-group">
+
+
+
+        </ul>
+
+      </div>
+    </div>
+  </div>
+
+
+<div class="container">
+  <div class="row justify-content-start" *ngIf="infoCompte" >
+    <div class="col-md-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Informations sur le compte</h3>
+
+        </div>
+        <ul class="list-group">
+
+          <div>
+            <label class="control-label">Code:</label>
+            <label> {{infoCompte.codeCompte}}</label>
+          </div>
+
+          <div>
+            <label class="control-label">Solde:</label>
+            <label> {{infoCompte.solde}}</label>
+          </div>
+
+          <div>
+            <label class="control-label">Date de création:</label>
+            <label> {{infoCompte.dateCreation}}</label>
+          </div>
+
+          <div *ngIf="infoCompte.decouvert">
+            <label class="control-label">Type de compte:</label>
+            <label > CC</label>
+          </div>
+
+          <div *ngIf="infoCompte.taux">
+            <label class="control-label">Type de compte:</label>
+            <label > CE</label>
+          </div>
+
+          <div *ngIf="infoCompte.decouvert">
+            <label class="control-label">Découvert:</label>
+            <label > {{infoCompte.decouvert}}</label>
+          </div>
+
+          <div *ngIf="infoCompte.taux">
+            <label class="control-label">Taux:</label>
+            <label > {{infoCompte.taux}}</label>
+          </div>
+<div>
+  <button class="btn btn-primary"  (click)="goToPageOp(infoCompte.codeCompte)">List des opérations</button>
+</div>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>

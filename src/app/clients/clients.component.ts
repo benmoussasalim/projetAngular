@@ -45,4 +45,16 @@ this.dosearch();
   onEditClient(code: any) {
 this.router.navigate(['editClient', code]);
   }
+
+
+  onDeleteClient(c: Client) {
+    const confirm = window.confirm('Est vous sure ?');
+    if ( confirm === true ){
+      this.clientService.deleteClient(c.code).subscribe(data => {
+        this.pageclient.splice(this.pageclient.indexOf(c), 1);
+      }, error => {
+        console.log(error);
+      });
+    }
+  }
 }

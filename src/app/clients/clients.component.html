@@ -33,7 +33,10 @@
   <td>{{c.email}}</td>
   <td>{{c.adresse}}</td>
   <td>
-    <a (click)="onEditClient(c.code)" class="clickable"> Edit </a>
+    <button class="btn btn-info" (click)="onEditClient(c.code)" > Edit </button>
+  </td>
+  <td>
+    <button class="btn btn-danger" (click)="onDeleteClient(c)" > Delete </button>
   </td>
 </tr>
 </table>
