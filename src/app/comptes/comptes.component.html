@@ -16,34 +16,55 @@
           <div>
             <label>Code de Compte:</label>
             <input type="text" [(ngModel)]="idCompte">
-            <button class="btn btn-primary" (click)="chercherCompte(idCompte)">OK</button>
+            <button class="btn btn-primary" (click)="chercherCompte()">OK</button>
           </div>
           <div class="text-danger" *ngIf="!infoCompte" >{{message}}</div>
     </ul>
 
     </div>
     </div>
-  </div>
-</div>
-
-<div class="container">
-  <div class="row justify-content-end "  *ngIf="infoCompte" >
-    <div class="col-md-6">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-            Opérations sur le compte </h3>
-
-        </div>
-        <ul class="list-group">
-
-
-
-        </ul>
+  <div class="col-md-6" *ngIf="infoCompte">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          Opérations sur le compte </h3>
 
       </div>
+
+      <ul class="list-group">
+        <div>
+          <label class="control-label">Compte :</label>
+          <label> {{infoCompte.codeCompte}}</label>
+        </div>
+        <div>
+          <input type="radio" name="typeO" value="VERS" [(ngModel)]="typeOp"
+                 checked="checked" onChange="document.getElementById('forVirement').style.display='none'">
+          <label>Versement</label>
+          <input type="radio" name="typeO"  value="RET" [(ngModel)]="typeOp"
+                 checked="checked" onChange="document.getElementById('forVirement').style.display='none'">
+          <label>Retrait</label>
+          <input type="radio" name="typeO"  value="VIR" [(ngModel)]="typeOp"
+                 checked="checked" onChange="document.getElementById('forVirement').style.display='block'">
+          <label>Virement</label>
+        </div>
+          <div id="forVirement">
+            <label class="control-label">Vers :</label>
+            <input type="text" [(ngModel)]="codeCompte2"/>
+          </div>
+          <div>
+          <label class="control-label">Montant :</label>
+          <input type="text" [(ngModel)]="montant"/>
+         </div>
+
+
+
+      </ul>
+        <button class="btn btn-primary" type="submit" (click)="operationCp()">save</button>
+
     </div>
   </div>
+  </div>
+</div>
 
 
 <div class="container">
@@ -57,40 +78,43 @@
         </div>
         <ul class="list-group">
 
-          <div>
-            <label class="control-label">Code:</label>
-            <label> {{infoCompte.codeCompte}}</label>
-          </div>
 
-          <div>
-            <label class="control-label">Solde:</label>
-            <label> {{infoCompte.solde}}</label>
-          </div>
 
-          <div>
-            <label class="control-label">Date de création:</label>
-            <label> {{infoCompte.dateCreation}}</label>
-          </div>
+          <table border="0">
+            <tr>
+              <th></th>
+              <th></th>
+            </tr>
+            <tr>
+              <th>Code de compte : </th>
+              <td>{{infoCompte.codeCompte}}</td>
+            </tr>
+            <tr>
+              <th>Solde : </th>
+              <td>{{infoCompte.solde}}</td>
+            </tr>
+            <tr>
+              <th>Date de création :</th>
+              <td>{{infoCompte.dateCreation}}</td>
+            </tr>
+            <tr *ngIf="infoCompte.decouvert" >
+              <th>Découvert : </th>
+              <td>{{infoCompte.decouvert}}</td>
+            </tr>
+            <tr *ngIf="infoCompte.taux">
+              <th>Taux : </th>
+              <td>{{infoCompte.taux}}</td>
+            </tr>
+            <tr *ngIf="infoCompte.decouvert">
+              <th>Type : </th>
+              <td>Compte Courant</td>
+            </tr>
+            <tr *ngIf="infoCompte.taux" >
+              <th></th>
+              <td>Compte Epargne</td>
+            </tr>
+          </table>
 
-          <div *ngIf="infoCompte.decouvert">
-            <label class="control-label">Type de compte:</label>
-            <label > CC</label>
-          </div>
-
-          <div *ngIf="infoCompte.taux">
-            <label class="control-label">Type de compte:</label>
-            <label > CE</label>
-          </div>
-
-          <div *ngIf="infoCompte.decouvert">
-            <label class="control-label">Découvert:</label>
-            <label > {{infoCompte.decouvert}}</label>
-          </div>
-
-          <div *ngIf="infoCompte.taux">
-            <label class="control-label">Taux:</label>
-            <label > {{infoCompte.taux}}</label>
-          </div>
 <div>
   <button class="btn btn-primary"  (click)="goToPageOp(infoCompte.codeCompte)">List des opérations</button>
 </div>
@@ -99,5 +123,4 @@
       </div>
     </div>
   </div>
-</div>
 </div>

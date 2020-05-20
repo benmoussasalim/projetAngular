@@ -7,7 +7,7 @@ import { ClientsComponent } from './clients/clients.component';
 import {RouterModule, Routes} from '@angular/router';
 import {AboutComponent} from './about/about.component';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NewClientComponent } from './new-client/new-client.component';
 import { EditClientComponent } from './edit-client/edit-client.component';
 import { ComptesComponent } from './comptes/comptes.component';
@@ -36,7 +36,8 @@ const appRoutes: Routes = [
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

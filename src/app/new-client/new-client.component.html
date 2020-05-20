@@ -18,32 +18,50 @@
             Ajouter un client</h3>
         </div>
 
+        <form [formGroup]="postForm" (ngSubmit)="saveClient()">
         <ul class="list-group">
+
          <div>
            <label class="control-label">Nom:</label>
-           <input class="form-control" type="text" [(ngModel)]="client.nom">
+           <input class="form-control" formControlName="nom" type="text" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }">
+           <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+             <div *ngIf="f.nom.errors.required">First name is required</div>
+           </div>
          </div>
 
           <div>
             <label class="control-label">Prénom:</label>
-            <input class="form-control" type="text" [(ngModel)]="client.prenom">
+            <input class="form-control" formControlName="prenom" type="text" [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }">
+            <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+              <div *ngIf="f.prenom.errors.required">Last name is required</div>
+            </div>
           </div>
 
           <div>
             <label class="control-label">Date de naissance:</label>
-            <input class="form-control" type="date" [(ngModel)]="client.dateNaiss">
+            <input class="form-control" formControlName="dateNaiss" type="date" [ngClass]="{ 'is-invalid': submitted && f.dateNaiss.errors }">
+            <div *ngIf="submitted && f.dateNaiss.errors" class="invalid-feedback">
+              <div *ngIf="f.dateNaiss.errors.required">Date is required</div>
+            </div>
           </div>
           <div>
             <label class="control-label">Email:</label>
-            <input class="form-control" type="text" [(ngModel)]="client.email">
+            <input class="form-control" formControlName="email" type="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors.required">Email is required</div>
+            </div>
           </div>
           <div>
             <label class="control-label">Adresse:</label>
-            <input class="form-control" type="text" [(ngModel)]="client.adresse">
+            <input class="form-control" formControlName="adresse" type="text" [ngClass]="{ 'is-invalid': submitted && f.adresse.errors }">
+            <div *ngIf="submitted && f.adresse.errors" class="invalid-feedback">
+              <div *ngIf="f.adresse.errors.required">Address is required</div>
+            </div>
           </div>
 
         </ul>
-        <button class="btn btn-primary" (click)="saveClient()">Save</button>
+        <button class="btn btn-primary" type="submit"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+        </form>
   </div>
 </div>
 </div>
@@ -59,32 +77,36 @@
         </div>
 
         <ul class="list-group">
-          <div>
-            <label class="control-label">Id:</label>
-            <label> {{client.code}}</label>
-          </div>
-          <div>
-            <label class="control-label">Nom:</label>
-            <label> {{client.nom}}</label>
-          </div>
-
-          <div>
-            <label class="control-label">Prénom:</label>
-            <label> {{client.prenom}}</label>
-          </div>
-
-          <div>
-            <label class="control-label">Date de naissance:</label>
-            <label> {{client.dateNaiss}}</label>
-          </div>
-          <div>
-            <label class="control-label">Email:</label>
-            <label> {{client.email}}</label>
-          </div>
-          <div>
-            <label class="control-label">Adresse:</label>
-            <label> {{client.adresse}}</label>
-          </div>
+          <table border="0">
+            <tr>
+              <th></th>
+              <th></th>
+            </tr>
+            <tr>
+              <th>ID : </th>
+              <td>{{client.code}}</td>
+            </tr>
+            <tr>
+              <th>Nom : </th>
+              <td>{{client.nom}}</td>
+            </tr>
+            <tr>
+              <th>Prenom</th>
+              <td>{{client.prenom}}</td>
+            </tr>
+            <tr>
+              <th>Date Naissance : </th>
+              <td>{{client.dateNaiss | date: ('dd/mm/yyyy')}}</td>
+            </tr>
+            <tr>
+              <th>Email : </th>
+              <td>{{client.email}}</td>
+            </tr>
+            <tr>
+              <th>Adresse : </th>
+              <td>{{client.adresse}}</td>
+            </tr>
+          </table>
 
         </ul>
         <button class="btn btn-primary" (click)="mode=1">Nouveau client</button>
